@@ -22,7 +22,7 @@
 // Project 01: Scary Hospital Story
 
 VAR choices = 11
-
+VAR has_gown = false
 
 -> start
 
@@ -35,12 +35,9 @@ Almost like a whisper calling your name.
 Dont let the number of choices reach Zero : {choices}
 
 * [Put on the gown.] 
-    ~ choices -= 1
-    {choices <= 0:
-            -> death
-        - else:
-            -> gown_pickup
-    }
+    ~ has_gown = true
+    ~ choices += 1 
+    -> hallway
 + [Get up and investigate.] 
     ~ choices -= 1
     {choices <= 0:
